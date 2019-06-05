@@ -6,7 +6,7 @@ import android.widget.EditText;
 public class Validation {
 
 
-    public boolean validateLoginForm(EditText e, EditText p){
+    public boolean validateEmailPasswordForm(EditText e, EditText p){
 
         boolean valid = true;
 

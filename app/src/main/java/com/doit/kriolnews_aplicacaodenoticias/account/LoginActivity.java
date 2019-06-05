@@ -24,15 +24,13 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity{
 
     private final String TAG = "Login EmailAndPassword";
+    private ProgressDialog progressDialog;
+    private FirebaseAuth mAuth;
 
     private EditText email;
     private EditText password;
     private Button btn_entrar;
     private TextView btn_signUp;
-    private  ProgressDialog progressDialog;
-
-    private FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +72,7 @@ public class LoginActivity extends AppCompatActivity{
 
     private void signIn(String e, String p){
 
-         if(!new Validation().validateLoginForm(email,password)){
+         if(!new Validation().validateEmailPasswordForm(email,password)){
             return;
         }
 
@@ -86,13 +84,15 @@ public class LoginActivity extends AppCompatActivity{
                 if(task.isSuccessful()){
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG,"signInWithEmail:success");
-                    progressDialog.hide();
+                    MessageService.toast(getApplicationContext(),"Seja Bem Vindo " + mAuth.getCurrentUser().getDisplayName());
                 }else{
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.getException());
                     MessageService.toast(getApplicationContext(),"Utilizador nao encontrado.");
-                    progressDialog.hide();
                 }
+
+                progressDialog.hide();
+
             }
         });
     }

@@ -1,15 +1,31 @@
 package com.doit.kriolnews_aplicacaodenoticias.account;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.doit.kriolnews_aplicacaodenoticias.R;
+import com.doit.kriolnews_aplicacaodenoticias.Services.MessageService;
+import com.doit.kriolnews_aplicacaodenoticias.utils.Validation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignUpActivity extends AppCompatActivity {
+
+    private final String TAG = "SignUp EmailAndPassword";
+    private ProgressDialog progressDialog;
+    private FirebaseAuth mAuth;
 
     private EditText email;
     private EditText password;
@@ -25,12 +41,57 @@ public class SignUpActivity extends AppCompatActivity {
         password = findViewById(R.id.password_input);
         btn_registrar = findViewById(R.id.btn_registrar);
         login = findViewById(R.id.tv_login);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        btn_registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createAccount(email.getText().toString(),password.getText().toString());
+            }
+        });
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openLoginActivity();
+            }
+        });
     }
 
 
+    private void createAccount(String e, String p){
+        Log.d(TAG,"createAccount:"+email);
+        if(!new Validation().validateEmailPasswordForm(email, password)){
+            return;
+        }
 
-    private void openLoginView(){
-        Intent loginIntent = new Intent(getApplicationContext(),SignUpActivity.class);
-        startActivity(loginIntent);
+        progressDialog = ProgressDialog.show(SignUpActivity.this, "Aguarde", "Registando o usuario.");
+
+        mAuth.createUserWithEmailAndPassword(e,p)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    Log.d(TAG,"createUserWithEmail:sucess");
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                            .setDisplayName("Ailson Moreira")
+                            .build();
+                    user.updateProfile(profileUpdates);
+                }else {
+                    Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                    MessageService.toast(getApplicationContext(),"Nao foi possivel efetuar o registro.");
+                }
+
+                progressDialog.hide();
+            }
+        });
+
+    }
+
+    private void openLoginActivity(){
+        Intent intentLogin = new Intent(getApplicationContext(),LoginActivity.class);
+        startActivity(intentLogin);
     }
 }
