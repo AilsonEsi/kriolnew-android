@@ -27,6 +27,7 @@ public class SignUpActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
 
+    private EditText username;
     private EditText email;
     private EditText password;
     private Button btn_registrar;
@@ -37,6 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        username = findViewById(R.id.username_input);
         email = findViewById(R.id.email_input);
         password = findViewById(R.id.password_input);
         btn_registrar = findViewById(R.id.btn_registrar);
@@ -66,7 +68,7 @@ public class SignUpActivity extends AppCompatActivity {
             return;
         }
 
-        progressDialog = ProgressDialog.show(SignUpActivity.this, "Aguarde", "Registando o usuario.");
+        progressDialog = ProgressDialog.show(SignUpActivity.this, "Por favor Aguarde", "Processando");
 
         mAuth.createUserWithEmailAndPassword(e,p)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -76,9 +78,10 @@ public class SignUpActivity extends AppCompatActivity {
                     Log.d(TAG,"createUserWithEmail:sucess");
                     FirebaseUser user = mAuth.getCurrentUser();
                     UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                            .setDisplayName("Ailson Moreira")
+                            .setDisplayName(username.getText().toString())
                             .build();
                     user.updateProfile(profileUpdates);
+                    MessageService.toast(getApplicationContext(), "Registado com sucesso.");
                 }else {
                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
                     MessageService.toast(getApplicationContext(),"Nao foi possivel efetuar o registro.");

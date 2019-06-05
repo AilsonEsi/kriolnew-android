@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.doit.kriolnews_aplicacaodenoticias.MainActivity;
 import com.doit.kriolnews_aplicacaodenoticias.R;
 import com.doit.kriolnews_aplicacaodenoticias.Services.MessageService;
 import com.doit.kriolnews_aplicacaodenoticias.utils.Validation;
@@ -34,6 +35,8 @@ public class LoginActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -66,7 +69,7 @@ public class LoginActivity extends AppCompatActivity{
         super.onStart();
 
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        //FirebaseUser currentUser = mAuth.getCurrentUser();
 
     }
 
@@ -85,6 +88,7 @@ public class LoginActivity extends AppCompatActivity{
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG,"signInWithEmail:success");
                     MessageService.toast(getApplicationContext(),"Seja Bem Vindo " + mAuth.getCurrentUser().getDisplayName());
+                    openMainActivity();
                 }else{
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -97,6 +101,10 @@ public class LoginActivity extends AppCompatActivity{
         });
     }
 
+    private void openMainActivity(){
+        Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(mainIntent);
+    }
     private void openSignUpActivity(){
 
         Intent intentSignUp = new Intent(getApplicationContext(), SignUpActivity.class);
