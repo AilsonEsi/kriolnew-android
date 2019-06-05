@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#428bca</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="title_color">#D81B60</color>
+    <color name="btn_primary">#428bca</color>
+    <color name="btn_danger">#d9534f</color>
+    <color name="btn_warnning">#ffd800</color>
+    <color name="btn_success">#5cb85c</color>
+    <color name="btn_secundary">#fff</color>
 </resources>
