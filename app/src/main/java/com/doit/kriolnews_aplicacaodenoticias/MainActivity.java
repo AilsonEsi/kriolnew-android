@@ -21,6 +21,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
+        if(currentUser==null){
+            Intent loginIntent = new Intent(getApplicationContext(),LoginActivity.class);
+            startActivity(loginIntent);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -29,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
-        logedInUSer.setText(currentUser.getDisplayName());
+        //logedInUSer.setText(currentUser.getDisplayName());
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
