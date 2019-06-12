@@ -87,7 +87,7 @@ public class SignUpActivity extends AppCompatActivity {
                     MessageService.toast(getApplicationContext(),"Nao foi possivel efetuar o registro.");
                 }
 
-                progressDialog.hide();
+                progressDialog.dismiss();
             }
         });
 
@@ -97,4 +97,5 @@ public class SignUpActivity extends AppCompatActivity {
         Intent intentLogin = new Intent(getApplicationContext(),LoginActivity.class);
         startActivity(intentLogin);
     }
+
 }

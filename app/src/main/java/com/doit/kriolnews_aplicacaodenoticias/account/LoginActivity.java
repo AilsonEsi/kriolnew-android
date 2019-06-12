@@ -77,15 +77,15 @@ public class LoginActivity extends AppCompatActivity{
                 if(task.isSuccessful()){
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG,"signInWithEmail:success");
-                    MessageService.toast(getApplicationContext(),"Seja Bem Vindo " + mAuth.getCurrentUser().getDisplayName());
+                    MessageService.toast(getApplicationContext(),"Seja Bem-Vindo " + mAuth.getCurrentUser().getDisplayName());
                     openMainActivity();
                 }else{
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.getException());
-                    MessageService.toast(getApplicationContext(),"Utilizador nao encontrado.");
+                    MessageService.toast(getApplicationContext(),"Utilizador não encontrado.");
                 }
 
-                progressDialog.hide();
+                progressDialog.dismiss();
 
             }
         });
@@ -100,6 +100,5 @@ public class LoginActivity extends AppCompatActivity{
         Intent intentSignUp = new Intent(LoginActivity.this, SignUpActivity.class);
         startActivity(intentSignUp);
     }
-
 
 }

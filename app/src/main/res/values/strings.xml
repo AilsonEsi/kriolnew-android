@@ -2,4 +2,7 @@
     <string name="app_name">Kriolnews</string>
     <string name="app_title">Kriolnews Aplicação de Noticias</string>
     <string name="app_subtitle">Entre para o Mundo de Noticias</string>
+    <string name="hint_email">Email do utilizador</string>
+    <string name="hint_passoword">Senha do utilizador</string>
+    <string name="hint_username">Nome de conta</string>
 </resources>
