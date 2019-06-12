@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1012898704733",
+    "firebase_url": "https://kriolnews-fa737.firebaseio.com",
+    "project_id": "kriolnews-fa737",
+    "storage_bucket": "kriolnews-fa737.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012898704733:android:777b2956e62eb774",
+        "android_client_info": {
+          "package_name": "com.doit.kriolnews_aplicacaodenoticias"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1012898704733-22lguf0anae25igk2185ha0nqk17v703.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMIP_Or7LhpXjUsQRW8QUmfBizFcEbOLg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1012898704733-22lguf0anae25igk2185ha0nqk17v703.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
