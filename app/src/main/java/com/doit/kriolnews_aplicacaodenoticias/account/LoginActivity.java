@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity{
                     Log.d(TAG,"signInWithEmail:success");
                     MessageService.toast(getApplicationContext(),"Seja Bem-Vindo " + mAuth.getCurrentUser().getDisplayName());
                     openMainActivity();
+                    finish();
                 }else{
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -99,6 +100,7 @@ public class LoginActivity extends AppCompatActivity{
 
         Intent intentSignUp = new Intent(LoginActivity.this, SignUpActivity.class);
         startActivity(intentSignUp);
+        finish();
     }
 
 }
