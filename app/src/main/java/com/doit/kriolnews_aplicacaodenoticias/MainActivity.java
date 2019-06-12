@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            progressDialog.setMessage("Wait");
+            progressDialog.setMessage("Buscando Noticias ...");
             progressDialog.show();
         }
 
