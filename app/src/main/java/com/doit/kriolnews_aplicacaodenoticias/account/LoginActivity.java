@@ -63,15 +63,6 @@ public class LoginActivity extends AppCompatActivity{
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // Check if user is signed in (non-null) and update UI accordingly.
-        //FirebaseUser currentUser = mAuth.getCurrentUser();
-
-    }
-
     private void signIn(String e, String p){
 
          if(!new Validation().validateEmailPasswordForm(email,password)){
@@ -101,12 +92,12 @@ public class LoginActivity extends AppCompatActivity{
     }
 
     private void openMainActivity(){
-        Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(mainIntent);
     }
     private void openSignUpActivity(){
 
-        Intent intentSignUp = new Intent(getApplicationContext(), SignUpActivity.class);
+        Intent intentSignUp = new Intent(LoginActivity.this, SignUpActivity.class);
         startActivity(intentSignUp);
     }
 

@@ -54,7 +54,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/app_title"
+        android:text="@string/app_name"
         android:textColor="@color/btn_danger"
         android:textSize="50sp"
         app:fontFamily="sans-serif-light"
