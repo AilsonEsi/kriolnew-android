@@ -47,11 +47,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        titles = new ArrayList<>();
+        links = new ArrayList<>();
+
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
 
         logout = findViewById(R.id.btn_logout);
         listView = findViewById(R.id.lv_rss);
+        logedInUSer = findViewById(R.id.login_user);
         logedInUSer.setText(currentUser.getDisplayName());
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -109,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
             try
             {
-                URL url = new URL("http://feeds.news24.com/articles/fin24/tech/rss");
+                URL url = new URL("https://anacao.cv/feed/");
 
                 //creates new instance of PullParserFactory that can be used to create XML pull parsers
                 XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
@@ -191,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
                 exception = e;
             }
 
-            return exception.toString();
+            return null;
         }
 
         @Override
