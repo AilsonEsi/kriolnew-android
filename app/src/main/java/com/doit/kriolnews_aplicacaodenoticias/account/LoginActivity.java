@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.doit.kriolnews_aplicacaodenoticias.HomeActivity;
 import com.doit.kriolnews_aplicacaodenoticias.MainActivity;
 import com.doit.kriolnews_aplicacaodenoticias.R;
 import com.doit.kriolnews_aplicacaodenoticias.Services.MessageService;
@@ -69,7 +70,7 @@ public class LoginActivity extends AppCompatActivity{
             return;
         }
 
-        progressDialog = ProgressDialog.show(LoginActivity.this,"Aguarde","A carregar", true);
+        progressDialog = ProgressDialog.show(LoginActivity.this,"Aguarde","A carregar...", true);
 
         mAuth.signInWithEmailAndPassword(e,p).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -78,8 +79,7 @@ public class LoginActivity extends AppCompatActivity{
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG,"signInWithEmail:success");
                     MessageService.toast(getApplicationContext(),"Seja Bem-Vindo " + mAuth.getCurrentUser().getDisplayName());
-                    openMainActivity();
-                    finish();
+                    openHomeActivity();
                 }else{
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -92,15 +92,16 @@ public class LoginActivity extends AppCompatActivity{
         });
     }
 
-    private void openMainActivity(){
-        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(mainIntent);
+    private void openHomeActivity(){
+        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+        startActivity(intent);
+        this.finish();
     }
     private void openSignUpActivity(){
 
-        Intent intentSignUp = new Intent(LoginActivity.this, SignUpActivity.class);
-        startActivity(intentSignUp);
-        finish();
+        Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 
 }

@@ -16,9 +16,10 @@ public class Init extends Application {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         if(firebaseUser != null){
-            Intent intent = new Intent(Init.this,MainActivity.class);
+            Intent intent = new Intent(Init.this,HomeActivity.class);
             intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
+
     }
 }

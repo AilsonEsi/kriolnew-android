@@ -1,5 +1,6 @@
 package com.doit.kriolnews_aplicacaodenoticias;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,9 +14,25 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.doit.kriolnews_aplicacaodenoticias.account.LoginActivity;
+import com.doit.kriolnews_aplicacaodenoticias.fragments.FragmentNewContent;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    //app
+    private TextView name_display;
+    private TextView email_display;
+    private Button logout;
+
+    //firebase
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +55,18 @@ public class HomeActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_home,new FragmentNewContent()).commit();
+
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+
+        logout = findViewById(R.id.action_logout);
+
+        View mHeaderView = navigationView.getHeaderView(0);
+        name_display = mHeaderView.findViewById(R.id.name_display);
+        email_display = mHeaderView.findViewById(R.id.email_display);
+        name_display.setText(currentUser.getDisplayName());
+        email_display.setText(currentUser.getEmail());
     }
 
     @Override
@@ -65,7 +94,13 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            mAuth.signOut();
+            Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
             return true;
         }
 
