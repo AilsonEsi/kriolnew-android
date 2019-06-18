@@ -6,7 +6,7 @@ import android.content.Intent;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class Home extends Application {
+public class Init extends Application {
 
     @Override
     public void onCreate() {
@@ -16,7 +16,7 @@ public class Home extends Application {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         if(firebaseUser != null){
-            Intent intent = new Intent(Home.this,MainActivity.class);
+            Intent intent = new Intent(Init.this,MainActivity.class);
             intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
