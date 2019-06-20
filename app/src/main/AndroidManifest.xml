@@ -15,7 +15,6 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".account.SignUpActivity"
