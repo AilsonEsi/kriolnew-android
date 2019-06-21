@@ -17,6 +17,7 @@ import android.widget.ListView;
 
 import com.doit.kriolnews_aplicacaodenoticias.HomeActivity;
 import com.doit.kriolnews_aplicacaodenoticias.R;
+import com.doit.kriolnews_aplicacaodenoticias.model.News;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -28,6 +29,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.Inflater;
 
 public class FragmentNewContent extends Fragment {
@@ -37,6 +39,7 @@ public class FragmentNewContent extends Fragment {
 
     private ArrayList<String> titles;
     private ArrayList<String> links;
+    private List<News> newsList;
 
     @Nullable
     @Override
@@ -46,6 +49,7 @@ public class FragmentNewContent extends Fragment {
 
         titles = new ArrayList<>();
         links = new ArrayList<>();
+        newsList = new ArrayList<>();
 
         listView = view.findViewById(R.id.lv_rss);
         mAuth = FirebaseAuth.getInstance();
@@ -95,6 +99,7 @@ public class FragmentNewContent extends Fragment {
         @Override
         protected String doInBackground(Integer... params) {
 
+            String[] Urls = {"https://anacao.cv/feed/",};
             try
             {
                 URL url = new URL("https://anacao.cv/feed/");
@@ -128,6 +133,8 @@ public class FragmentNewContent extends Fragment {
 
                 while (eventType != XmlPullParser.END_DOCUMENT)
                 {
+                    News n = new News();
+
                     //if we are at a START_TAG (opening tag)
                     if (eventType == XmlPullParser.START_TAG)
                     {
@@ -142,9 +149,11 @@ public class FragmentNewContent extends Fragment {
                             if (insideItem)
                             {
                                 // extract the text between <title> and </title>
+                                //n.setTitle(xpp.nextText());
                                 titles.add(xpp.nextText());
                             }
                         }
+
                         //if the tag is called "link"
                         else if (xpp.getName().equalsIgnoreCase("link"))
                         {
@@ -158,6 +167,7 @@ public class FragmentNewContent extends Fragment {
                     //if we are at an END_TAG and the END_TAG is called "item"
                     else if (eventType == XmlPullParser.END_TAG && xpp.getName().equalsIgnoreCase("item"))
                     {
+                        newsList.add(n);
                         insideItem = false;
                     }
 
@@ -183,7 +193,7 @@ public class FragmentNewContent extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, titles);
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.news_item, titles);
             listView.setAdapter(adapter);
             progressDialog.dismiss();
         }
