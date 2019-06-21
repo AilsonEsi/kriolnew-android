@@ -15,9 +15,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.doit.kriolnews_aplicacaodenoticias.HomeActivity;
 import com.doit.kriolnews_aplicacaodenoticias.R;
-import com.doit.kriolnews_aplicacaodenoticias.model.News;
+import com.doit.kriolnews_aplicacaodenoticias.model.NewsItem;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -30,7 +29,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class FragmentNewContent extends Fragment {
 
@@ -39,7 +37,7 @@ public class FragmentNewContent extends Fragment {
 
     private ArrayList<String> titles;
     private ArrayList<String> links;
-    private List<News> newsList;
+    private List<NewsItem> newsItemList;
 
     @Nullable
     @Override
@@ -49,7 +47,7 @@ public class FragmentNewContent extends Fragment {
 
         titles = new ArrayList<>();
         links = new ArrayList<>();
-        newsList = new ArrayList<>();
+        newsItemList = new ArrayList<>();
 
         listView = view.findViewById(R.id.lv_rss);
         mAuth = FirebaseAuth.getInstance();
@@ -133,7 +131,7 @@ public class FragmentNewContent extends Fragment {
 
                 while (eventType != XmlPullParser.END_DOCUMENT)
                 {
-                    News n = new News();
+                    NewsItem n = new NewsItem();
 
                     //if we are at a START_TAG (opening tag)
                     if (eventType == XmlPullParser.START_TAG)
@@ -167,7 +165,7 @@ public class FragmentNewContent extends Fragment {
                     //if we are at an END_TAG and the END_TAG is called "item"
                     else if (eventType == XmlPullParser.END_TAG && xpp.getName().equalsIgnoreCase("item"))
                     {
-                        newsList.add(n);
+                        newsItemList.add(n);
                         insideItem = false;
                     }
 
