@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorPrimaryDark"
     tools:context=".account.SignUpActivity">
 
     <TextView
@@ -120,6 +120,7 @@
         android:hint="@string/hint_email"
         android:inputType="textEmailAddress"
         android:textColor="@color/btn_secundary"
+        android:textColorHint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.347"
@@ -141,6 +142,7 @@
         android:hint="@string/hint_passoword"
         android:inputType="textPassword"
         android:textColor="@color/btn_secundary"
+        android:textColorHint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.347"
@@ -162,6 +164,7 @@
         android:hint="@string/hint_username"
         android:inputType="textPersonName"
         android:textColor="@color/btn_secundary"
+        android:textColorHint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"

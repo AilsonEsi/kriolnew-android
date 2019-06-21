@@ -29,16 +29,16 @@
             android:layout_centerHorizontal="true"/>
 
         <TextView
-            android:ellipsize="end"
             android:id="@+id/title_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/thumb_img"
             android:layout_centerHorizontal="true"
-            android:background="#80000000"
-            android:padding="8dp"
+            android:background="#428bca"
+            android:ellipsize="end"
             android:gravity="center"
             android:lines="1"
+            android:padding="8dp"
             android:textAppearance="?android:attr/textAppearanceLargeInverse" />
 
         <TextView
