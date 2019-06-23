@@ -36,7 +36,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
         holder.Title.setText(current.getTitle());
         holder.Description.setText(current.getDescription());
         holder.Date.setText(current.getPubDate());
-        Picasso.with(context.getApplicationContext()).load(current.getThumbnailUrl()).into(holder.Thumbnail);
+        String url = current.getThumbnailUrl().substring(7);
+        Picasso.with(context).load("https://"+url).into(holder.Thumbnail);
     }
 
 
