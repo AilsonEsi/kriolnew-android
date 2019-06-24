@@ -1,16 +1,19 @@
 package com.doit.kriolnews_aplicacaodenoticias.model;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,8 +48,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
         holder.Description.setText(current.getDescription());
         holder.Date.setText(current.getPubDate());
         holder.category.setText(current.getCategory());
-        String url = current.getThumbnailUrl().substring(7);
-        Picasso.with(context).load("https://"+url).into(holder.Thumbnail);
+        if(current.getThumbnailUrl()!=null) {
+            String url = current.getThumbnailUrl().substring(7);
+            Picasso.with(context).load("https://"+url).into(holder.Thumbnail);
+        }else{
+            String url = "https://sanitationsolutions.net/wp-content/uploads/2015/05/empty-image.png";
+            Picasso.with(context).load(url).into(holder.Thumbnail);
+        }
 
         final NewsItem news = newsItems.get(position);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +68,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
         holder.cardView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Toast.makeText(context,"Work", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(context,"Work", Toast.LENGTH_SHORT).show();
                 return true;
             }
         });

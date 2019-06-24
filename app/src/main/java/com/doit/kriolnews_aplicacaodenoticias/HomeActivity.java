@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 
 import com.doit.kriolnews_aplicacaodenoticias.account.LoginActivity;
 import com.doit.kriolnews_aplicacaodenoticias.fragments.FragmentNewContent;
+import com.doit.kriolnews_aplicacaodenoticias.model.ReadRss;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -31,6 +33,8 @@ public class HomeActivity extends AppCompatActivity
     private TextView name_display;
     private TextView email_display;
     private Button logout;
+    private RecyclerView recyclerView;
+
 
     //firebase
     private FirebaseAuth mAuth;
@@ -118,7 +122,10 @@ public class HomeActivity extends AppCompatActivity
             // Handle the camera action
             getSupportFragmentManager().beginTransaction().replace(R.id.content_home,new FragmentNewContent()).commit();
         } else if (id == R.id.nav_gallery) {
-
+            recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+            //Call Read rss asyntask to fetch rss
+            ReadRss readRss = new ReadRss(this, recyclerView,"https://anacao.cv/feed/");
+            readRss.execute();
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_tools) {

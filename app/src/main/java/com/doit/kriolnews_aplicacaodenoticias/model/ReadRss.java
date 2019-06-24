@@ -28,6 +28,15 @@ public class ReadRss extends AsyncTask<Void,Void,Void> {
     ArrayList<NewsItem> feedItems;
     RecyclerView recyclerView;
     URL url;
+    String page;
+
+    public ReadRss(Context context, RecyclerView recyclerView, String page) {
+        this.recyclerView = recyclerView;
+        this.context = context;
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Loading...");
+        this.page = page;
+    }
 
     public ReadRss(Context context, RecyclerView recyclerView) {
         this.recyclerView = recyclerView;
@@ -106,7 +115,11 @@ public class ReadRss extends AsyncTask<Void,Void,Void> {
     //This method will download rss feed document from specified url
     public Document Getdata() {
         try {
-            url = new URL(address);
+            if(page == null){
+                url = new URL(address);
+            }else{
+                url = new URL(page);
+            }
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             InputStream inputStream = connection.getInputStream();
