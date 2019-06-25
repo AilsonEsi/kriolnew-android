@@ -3,10 +3,11 @@ package com.doit.kriolnews_aplicacaodenoticias.model;
 import android.os.AsyncTask;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
+
+import com.doit.kriolnews_aplicacaodenoticias.enumeracao.FeedsProviders;
+import com.doit.kriolnews_aplicacaodenoticias.utils.FeedsUtil;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -23,7 +24,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class ReadRss extends AsyncTask<Void,Void,Void> {
     Context context;
-    String address = "https://expressodasilhas.cv/rss";
+    String address = FeedsProviders.EXPRE.getText();
     ProgressDialog progressDialog;
     ArrayList<NewsItem> feedItems;
     RecyclerView recyclerView;
@@ -58,7 +59,6 @@ public class ReadRss extends AsyncTask<Void,Void,Void> {
     protected Void doInBackground(Void... params) {
         //call process xml method to process document we downloaded from getData() method
         ProcessXml(Getdata());
-
         return null;
     }
 
@@ -76,6 +76,7 @@ public class ReadRss extends AsyncTask<Void,Void,Void> {
     // In this method we will process Rss feed  document we downloaded to parse useful information from it
     private void ProcessXml(Document data) {
         if (data != null) {
+
             feedItems = new ArrayList<>();
             Element root = data.getDocumentElement();
             Node channel = root.getChildNodes().item(1);
@@ -85,18 +86,24 @@ public class ReadRss extends AsyncTask<Void,Void,Void> {
                 if (cureentchild.getNodeName().equalsIgnoreCase("item")) {
                     NewsItem item = new NewsItem();
                     NodeList itemchilds = cureentchild.getChildNodes();
+                    String category = null;
                     for (int j = 0; j < itemchilds.getLength(); j++) {
                         Node cureent = itemchilds.item(j);
                         if (cureent.getNodeName().equalsIgnoreCase("title")) {
                             item.setTitle(cureent.getTextContent());
                         } else if (cureent.getNodeName().equalsIgnoreCase("description")) {
-                            item.setDescription(cureent.getTextContent());
+                            item.setDescription(new FeedsUtil(cureent.getTextContent()).removeHtmlTags());
                         } else if (cureent.getNodeName().equalsIgnoreCase("pubDate")) {
                             item.setPubDate(cureent.getTextContent());
                         } else if (cureent.getNodeName().equalsIgnoreCase("link")) {
                             item.setLink(cureent.getTextContent());
                         } else if (cureent.getNodeName().equalsIgnoreCase("category")) {
-                            item.setCategory(cureent.getTextContent());
+
+                            System.err.println(cureent.getTextContent());
+                            if(category == null) {
+                                category = cureent.getTextContent();
+                                item.setCategory(category);
+                            }
                         }
                         else if (cureent.getNodeName().equalsIgnoreCase("enclosure")) {
                             //this will return us thumbnail url

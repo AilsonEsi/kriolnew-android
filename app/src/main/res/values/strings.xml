@@ -14,9 +14,9 @@
     <string name="action_logout">Logout</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">A Nação</string>
-    <string name="menu_slideshow">Expresso das Ilhas</string>
-    <string name="menu_tools">Cv Magazine</string>
+    <string name="menu_expre">Expresso das Ilhas</string>
+    <string name="menu_anacao">A Nação</string>
+    <string name="menu_cmv">Cv Magazine</string>
     <string name="menu_asemana">A Semana</string>
-    <string name="menu_share">Gerir perfil</string>
+    <string name="menu_gprofile">Gerir perfil</string>
 </resources>

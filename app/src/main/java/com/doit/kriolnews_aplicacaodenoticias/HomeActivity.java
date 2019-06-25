@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.doit.kriolnews_aplicacaodenoticias.account.LoginActivity;
+import com.doit.kriolnews_aplicacaodenoticias.enumeracao.FeedsProviders;
 import com.doit.kriolnews_aplicacaodenoticias.fragments.FragmentNewContent;
 import com.doit.kriolnews_aplicacaodenoticias.model.ReadRss;
 import com.google.firebase.auth.FirebaseAuth;
@@ -115,24 +116,29 @@ public class HomeActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        ReadRss readRss;
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
             // Handle the camera action
             getSupportFragmentManager().beginTransaction().replace(R.id.content_home,new FragmentNewContent()).commit();
-        } else if (id == R.id.nav_gallery) {
-            recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-            //Call Read rss asyntask to fetch rss
-            ReadRss readRss = new ReadRss(this, recyclerView,"https://anacao.cv/feed/");
+
+        } else if (id == R.id.nav_expre) {
+            readRss = new ReadRss(this, recyclerView, FeedsProviders.EXPRE.getText());
             readRss.execute();
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        }else if (id == R.id.nav_asemana) {
+        } else if (id == R.id.nav_anacao) {
+            //Call Read rss asyntask to fetch rss
+            readRss = new ReadRss(this, recyclerView,FeedsProviders.ANACAO.getText());
+            readRss.execute();
+        } else if (id == R.id.nav_cvm) {
+            readRss = new ReadRss(this, recyclerView,FeedsProviders.CVM.getText());
+            readRss.execute();
+        } else if (id == R.id.nav_asemana) {
+            readRss = new ReadRss(this, recyclerView,FeedsProviders.ASEMANA.getText());
+            readRss.execute();
+        } else if (id == R.id.nav_gprofile) {
 
         }
 

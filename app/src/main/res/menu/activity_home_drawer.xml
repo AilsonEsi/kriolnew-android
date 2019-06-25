@@ -9,17 +9,17 @@
             android:icon="@android:drawable/ic_menu_view"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_expre"
             android:icon="@android:drawable/ic_menu_view"
-            android:title="@string/menu_gallery" />
+            android:title="@string/menu_expre" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_anacao"
             android:icon="@android:drawable/ic_menu_view"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/menu_anacao" />
         <item
-            android:id="@+id/nav_tools"
+            android:id="@+id/nav_cvm"
             android:icon="@android:drawable/ic_menu_view"
-            android:title="@string/menu_tools" />
+            android:title="@string/menu_cmv" />
         <item
             android:id="@+id/nav_asemana"
             android:icon="@android:drawable/ic_menu_view"
@@ -29,9 +29,9 @@
     <item android:title="Dados de Conta">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_gprofile"
                 android:icon="@android:drawable/ic_menu_preferences"
-                android:title="@string/menu_share" />
+                android:title="@string/menu_gprofile" />
         </menu>
     </item>
 
