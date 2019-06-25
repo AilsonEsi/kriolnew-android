@@ -2,7 +2,7 @@ package com.doit.kriolnews_aplicacaodenoticias.enumeracao;
 
 public enum FeedsProviders {
 
-    EXPRE("https://expressodasilhas.cv/rss"), ANACAO("https://anacao.cv/feed/"), CVM(""), ASEMANA("https://opais.cv/feed/");
+    EXPRE("https://expressodasilhas.cv/rss"), ANACAO("https://anacao.cv/feed/"), CVM(""), OPAIS("https://opais.cv/feed/");
 
     private String text;
 

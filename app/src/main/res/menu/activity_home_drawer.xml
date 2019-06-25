@@ -21,9 +21,9 @@
             android:icon="@android:drawable/ic_menu_view"
             android:title="@string/menu_cmv" />
         <item
-            android:id="@+id/nav_asemana"
+            android:id="@+id/nav_opais"
             android:icon="@android:drawable/ic_menu_view"
-            android:title="@string/menu_asemana" />
+            android:title="@string/menu_opais" />
     </group>
 
     <item android:title="Dados de Conta">

@@ -135,8 +135,8 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_cvm) {
             readRss = new ReadRss(this, recyclerView,FeedsProviders.CVM.getText());
             readRss.execute();
-        } else if (id == R.id.nav_asemana) {
-            readRss = new ReadRss(this, recyclerView,FeedsProviders.ASEMANA.getText());
+        } else if (id == R.id.nav_opais) {
+            readRss = new ReadRss(this, recyclerView,FeedsProviders.OPAIS.getText());
             readRss.execute();
         } else if (id == R.id.nav_gprofile) {
 
