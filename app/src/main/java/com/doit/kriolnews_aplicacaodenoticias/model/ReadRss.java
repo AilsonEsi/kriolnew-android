@@ -70,7 +70,7 @@ public class ReadRss extends AsyncTask<Void,Void,Void> {
         progressDialog.dismiss();
         NewsAdapter adapter = new NewsAdapter(context, feedItems);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new VerticalSpace(20));
+        //recyclerView.addItemDecoration(new VerticalSpace(20));
         recyclerView.setAdapter(adapter);
 
     }
