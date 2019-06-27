@@ -132,8 +132,14 @@ public class HomeActivity extends AppCompatActivity
             //Call Read rss asyntask to fetch rss
             readRss = new ReadRss(this, recyclerView,FeedsProviders.ANACAO.getText());
             readRss.execute();
-        } else if (id == R.id.nav_cvm) {
-            readRss = new ReadRss(this, recyclerView,FeedsProviders.CVM.getText());
+        } else if (id == R.id.nav_cesports) {
+            readRss = new ReadRss(this, recyclerView,FeedsProviders.CE.getText());
+            readRss.execute();
+        } else if (id == R.id.nav_sma) {
+            readRss = new ReadRss(this, recyclerView,FeedsProviders.SMA.getText());
+            readRss.execute();
+        } else if (id == R.id.nav_jeco) {
+            readRss = new ReadRss(this, recyclerView,FeedsProviders.JE.getText());
             readRss.execute();
         } else if (id == R.id.nav_opais) {
             readRss = new ReadRss(this, recyclerView,FeedsProviders.OPAIS.getText());

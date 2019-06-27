@@ -16,7 +16,12 @@
     <string name="menu_home">Home</string>
     <string name="menu_expre">Expresso das Ilhas</string>
     <string name="menu_anacao">A Nação</string>
-    <string name="menu_cmv">Cv Magazine</string>
     <string name="menu_opais">O Pais</string>
-    <string name="menu_gprofile">Gerir perfil</string>
+    <string name="menu_cmv">Cv Magazine</string>
+    <string name="menu_jeconomico">Jornal Economico</string>
+    <string name="menu_sma">S. Magazine</string>
+    <string name="menu_ce">Criolo Sports</string>
+    <string name="menu_gprofile">Minha Conta</string>
+    <string name="menu_conf">Configurações</string>
+
 </resources>
