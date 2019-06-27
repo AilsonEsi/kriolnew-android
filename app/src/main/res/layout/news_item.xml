@@ -21,7 +21,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@color/btn_danger"/>
+            android:textColor="@color/btn_danger"
+            android:padding="16dp"/>
 
         <TextView
             android:id="@+id/date_text"
@@ -30,14 +31,16 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:padding="16dp"/>
 
         <ImageView
             android:id="@+id/thumb_img"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_below="@+id/date_text"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            />
 
         <TextView
             android:id="@+id/title_text"
