@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.doit.kriolnews_aplicacaodenoticias.R;
 import com.doit.kriolnews_aplicacaodenoticias.Services.MessageService;
-import com.doit.kriolnews_aplicacaodenoticias.utils.Validation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
