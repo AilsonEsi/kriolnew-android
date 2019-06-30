@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -64,7 +65,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void createAccount(String e, String p){
         Log.d(TAG,"createAccount:"+email);
-        if(!new Validation().validateEmailPasswordForm(email, password)){
+        if(!validateForm()){
             return;
         }
 
@@ -97,6 +98,36 @@ public class SignUpActivity extends AppCompatActivity {
         Intent intentLogin = new Intent(getApplicationContext(),LoginActivity.class);
         startActivity(intentLogin);
         finish();
+    }
+
+    public boolean validateForm(){
+
+        boolean valid = true;
+
+        String username = this.username.getText().toString();
+        if(TextUtils.isEmpty(username)){
+            this.username.setError("Por favor informe o seu username.");
+            valid = false;
+        }else{
+            this.username.setError(null);
+        }
+
+        String email = this.email.getText().toString();
+        if(TextUtils.isEmpty(email)){
+            this.email.setError("Por favor informe o seu email.");
+            valid = false;
+        }else{
+            this.email.setError(null);
+        }
+
+        String password = this.password.getText().toString();
+        if(TextUtils.isEmpty(password)){
+            this.password.setError("Por favor informe a sua senha.");
+            valid = false;
+        }
+
+        return valid;
+
     }
 
 }
