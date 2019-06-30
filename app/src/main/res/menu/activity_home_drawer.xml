@@ -6,31 +6,31 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@android:drawable/ic_menu_view"
+            android:icon="@drawable/ic_home_black_24dp"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_expre"
-            android:icon="@android:drawable/ic_menu_view"
+            android:icon="@drawable/ic_rss_feed_black_24dp"
             android:title="@string/menu_expre" />
         <item
             android:id="@+id/nav_anacao"
-            android:icon="@android:drawable/ic_menu_view"
+            android:icon="@drawable/ic_rss_feed_black_24dp"
             android:title="@string/menu_anacao" />
         <item
             android:id="@+id/nav_cesports"
-            android:icon="@android:drawable/ic_menu_view"
+            android:icon="@drawable/ic_rss_feed_black_24dp"
             android:title="@string/menu_ce" />
         <item
             android:id="@+id/nav_sma"
-            android:icon="@android:drawable/ic_menu_view"
+            android:icon="@drawable/ic_rss_feed_black_24dp"
             android:title="@string/menu_sma" />
         <item
             android:id="@+id/nav_jeco"
-            android:icon="@android:drawable/ic_menu_view"
+            android:icon="@drawable/ic_rss_feed_black_24dp"
             android:title="@string/menu_jeconomico" />
         <item
             android:id="@+id/nav_opais"
-            android:icon="@android:drawable/ic_menu_view"
+            android:icon="@drawable/ic_rss_feed_black_24dp"
             android:title="@string/menu_opais" />
     </group>
 
@@ -38,11 +38,11 @@
         <menu>
             <item
                 android:id="@+id/nav_gprofile"
-                android:icon="@android:drawable/ic_menu_preferences"
+                android:icon="@drawable/ic_person_black_24dp"
                 android:title="@string/menu_gprofile" />
             <item
                 android:id="@+id/nav_conf"
-                android:icon="@android:drawable/ic_menu_preferences"
+                android:icon="@drawable/ic_settings_black_24dp"
                 android:title="@string/menu_conf" />
         </menu>
     </item>
