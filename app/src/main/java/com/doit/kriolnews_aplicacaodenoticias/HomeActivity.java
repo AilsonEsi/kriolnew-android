@@ -17,6 +17,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -124,28 +125,36 @@ public class HomeActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
             getSupportFragmentManager().beginTransaction().replace(R.id.content_home,new FragmentNewContent()).commit();
-
+            setTitle("Kriolnews");
         } else if (id == R.id.nav_expre) {
             readRss = new ReadRss(this, recyclerView, FeedsProviders.EXPRE.getText());
             readRss.execute();
+            setTitle("Expresso das Ilhas");
         } else if (id == R.id.nav_anacao) {
             //Call Read rss asyntask to fetch rss
             readRss = new ReadRss(this, recyclerView,FeedsProviders.ANACAO.getText());
             readRss.execute();
+            setTitle("A Nação");
         } else if (id == R.id.nav_cesports) {
             readRss = new ReadRss(this, recyclerView,FeedsProviders.CE.getText());
             readRss.execute();
+            setTitle("Criol Sports");
         } else if (id == R.id.nav_sma) {
             readRss = new ReadRss(this, recyclerView,FeedsProviders.SMA.getText());
             readRss.execute();
+            setTitle("S.Magazine");
         } else if (id == R.id.nav_jeco) {
             readRss = new ReadRss(this, recyclerView,FeedsProviders.JE.getText());
             readRss.execute();
+            setTitle("Jornal Economico");
         } else if (id == R.id.nav_opais) {
             readRss = new ReadRss(this, recyclerView,FeedsProviders.OPAIS.getText());
             readRss.execute();
+            setTitle("O Pais");
         } else if (id == R.id.nav_gprofile) {
-
+            setTitle("Minha Conta");
+        } else if (id == R.id.nav_conf) {
+            setTitle("Configurações");
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
