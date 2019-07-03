@@ -154,7 +154,7 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_gprofile) {
             setTitle("Minha Conta");
         } else if (id == R.id.nav_conf) {
-            setTitle("Configurações");
+            startActivity(new Intent(getApplicationContext(),ConfigActivity.class));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

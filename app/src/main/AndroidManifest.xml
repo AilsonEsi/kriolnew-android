@@ -14,8 +14,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ConfigActivity"
+            android:parentActivityName=".HomeActivity"
+            ></activity>
+        <activity
             android:name=".HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".account.SignUpActivity"
             android:screenOrientation="portrait" />
