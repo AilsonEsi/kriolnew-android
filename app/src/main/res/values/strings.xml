@@ -4,7 +4,7 @@
     <string name="app_subtitle">Entre para o Mundo de Noticias</string>
     <string name="hint_email">Email do utilizador</string>
     <string name="hint_passoword">Senha do utilizador</string>
-    <string name="hint_username">Nome de conta</string>
+    <string name="hint_username">Nome de usuario</string>
     <string name="title_activity_home">Kriolnews</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
