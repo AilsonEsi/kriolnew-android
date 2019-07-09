@@ -154,7 +154,7 @@ public class HomeActivity extends AppCompatActivity
             readRss.execute();
             setTitle("O Pais");
         } else if (id == R.id.nav_gprofile) {
-            setTitle("Minha Conta");
+            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
         } else if (id == R.id.nav_conf) {
             startActivity(new Intent(getApplicationContext(),ConfigActivity.class));
         }
