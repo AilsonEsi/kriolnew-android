@@ -5,22 +5,20 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.doit.kriolnews_aplicacaodenoticias.MainActivity;
+import com.doit.kriolnews_aplicacaodenoticias.HomeActivity;
 import com.doit.kriolnews_aplicacaodenoticias.R;
 import com.doit.kriolnews_aplicacaodenoticias.Services.MessageService;
-import com.doit.kriolnews_aplicacaodenoticias.utils.Validation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity{
 
@@ -65,11 +63,11 @@ public class LoginActivity extends AppCompatActivity{
 
     private void signIn(String e, String p){
 
-         if(!new Validation().validateEmailPasswordForm(email,password)){
+         if(!validateForm()){
             return;
         }
 
-        progressDialog = ProgressDialog.show(LoginActivity.this,"Aguarde","A carregar", true);
+        progressDialog = ProgressDialog.show(LoginActivity.this,"Aguarde","A carregar...", true);
 
         mAuth.signInWithEmailAndPassword(e,p).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -78,8 +76,7 @@ public class LoginActivity extends AppCompatActivity{
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG,"signInWithEmail:success");
                     MessageService.toast(getApplicationContext(),"Seja Bem-Vindo " + mAuth.getCurrentUser().getDisplayName());
-                    openMainActivity();
-                    finish();
+                    openHomeActivity();
                 }else{
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -92,15 +89,38 @@ public class LoginActivity extends AppCompatActivity{
         });
     }
 
-    private void openMainActivity(){
-        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(mainIntent);
+    private void openHomeActivity(){
+        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+        startActivity(intent);
+        this.finish();
     }
     private void openSignUpActivity(){
 
-        Intent intentSignUp = new Intent(LoginActivity.this, SignUpActivity.class);
-        startActivity(intentSignUp);
-        finish();
+        Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
+
+    public boolean validateForm(){
+
+        boolean valid = true;
+
+        String email = this.email.getText().toString();
+        if(TextUtils.isEmpty(email)){
+            this.email.setError("Por favor informe o seu email.");
+            valid = false;
+        }else{
+            this.email.setError(null);
+        }
+
+        String password = this.password.getText().toString();
+        if(TextUtils.isEmpty(password)){
+            this.password.setError("Por favor informe a sua senha.");
+            valid = false;
+        }
+
+        return valid;
+
     }
 
 }

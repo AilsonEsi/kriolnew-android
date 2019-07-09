@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_expre"
+            android:icon="@drawable/ic_rss_feed_black_24dp"
+            android:title="@string/menu_expre" />
+        <item
+            android:id="@+id/nav_anacao"
+            android:icon="@drawable/ic_rss_feed_black_24dp"
+            android:title="@string/menu_anacao" />
+        <item
+            android:id="@+id/nav_cesports"
+            android:icon="@drawable/ic_rss_feed_black_24dp"
+            android:title="@string/menu_ce" />
+        <item
+            android:id="@+id/nav_sma"
+            android:icon="@drawable/ic_rss_feed_black_24dp"
+            android:title="@string/menu_sma" />
+        <item
+            android:id="@+id/nav_jeco"
+            android:icon="@drawable/ic_rss_feed_black_24dp"
+            android:title="@string/menu_jeconomico" />
+        <item
+            android:id="@+id/nav_opais"
+            android:icon="@drawable/ic_rss_feed_black_24dp"
+            android:title="@string/menu_opais" />
+    </group>
+
+    <item android:title="Dados de Conta">
+        <menu>
+            <item
+                android:id="@+id/nav_gprofile"
+                android:icon="@drawable/ic_person_black_24dp"
+                android:title="@string/menu_gprofile" />
+            <item
+                android:id="@+id/nav_conf"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="@string/menu_conf" />
+        </menu>
+    </item>
+
+</menu>
