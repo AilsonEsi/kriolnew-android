@@ -1,5 +1,7 @@
 package com.doit.kriolnews_aplicacaodenoticias.model;
 
+import java.util.Date;
+
 public class Posts {
 
     private String id;
@@ -8,25 +10,35 @@ public class Posts {
     private String category;
     private String content;
     private String imgUri;
+    private String userId;
+    private String pubDate;
+    private String author;
 
     public Posts() {
     }
 
-    public Posts(String title, String description, String category, String content, String imgUri) {
+    public Posts(String title, String description, String category, String content, String imgUri, String userId, String pubDate, String author) {
         this.title = title;
         this.description = description;
         this.category = category;
         this.content = content;
         this.imgUri = imgUri;
+        this.userId = userId;
+        this.pubDate = pubDate;
+        this.author = author;
     }
 
-    public Posts(String id, String title, String description, String category, String content, String imgUri) {
+    public Posts(String id, String title, String description, String category, String content, String imgUri, String userId, String pubDate,String author ) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.category = category;
         this.content = content;
         this.imgUri = imgUri;
+        this.userId = userId;
+        this.pubDate = pubDate;
+        this.author = author;
+
     }
 
     public String getId() {
@@ -75,5 +87,29 @@ public class Posts {
 
     public void setImgUri(String imgUri) {
         this.imgUri = imgUri;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(String pubDate) {
+        this.pubDate = pubDate;
+    }
+
+    public void setAuthor(String author){
+        this.author = author;
+    }
+
+    public String getAuthor(){
+        return author;
     }
 }

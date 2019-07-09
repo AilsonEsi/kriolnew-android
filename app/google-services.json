@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1012898704733-bp5pqj2coc142bq2jcnchm49voui9a2d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.doit.kriolnews_aplicacaodenoticias",
+            "certificate_hash": "8a7d01c6d962a1420afb903a50099c76fca384ca"
+          }
+        },
+        {
           "client_id": "1012898704733-22lguf0anae25igk2185ha0nqk17v703.apps.googleusercontent.com",
           "client_type": 3
         }

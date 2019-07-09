@@ -18,6 +18,7 @@ import com.doit.kriolnews_aplicacaodenoticias.model.Posts;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -25,6 +26,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class PostsActivity extends AppCompatActivity {
 
@@ -42,10 +47,12 @@ public class PostsActivity extends AppCompatActivity {
 
     private Uri uriImagem;
 
+    FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private StorageReference storageReference;
     private FirebaseAuth mAuth;
-    private StorageTask     mUploadTask;
+    private FirebaseUser mUser;
+    private StorageTask mUploadTask;
     private ProgressDialog progressDialog;
 
 
@@ -64,8 +71,10 @@ public class PostsActivity extends AppCompatActivity {
         btnPublish = findViewById(R.id.btn_publish);
 
         storageReference = FirebaseStorage.getInstance().getReference("posts");
-        //databaseReference = FirebaseDatabase.getInstance().getReference("posts");
-
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getInstance().getReference("posts");
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
 
         btnLoader.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +86,7 @@ public class PostsActivity extends AppCompatActivity {
         btnPublish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 publish();
             }
         });
@@ -116,16 +126,21 @@ public class PostsActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                            //String postNewsId = databaseReference.push().getKey();
+                            String postNewsId = databaseReference.push().getKey();
 
-                           /* databaseReference.child(postNewsId).setValue(
-                                    new Posts(title.getText().toString(),
-                                            description.getText().toString(),
-                                            category.getText().toString(),
-                                            content.getText().toString(),
-                                            storageReference.getDownloadUrl().toString())
+                            Posts p = new Posts(
+                                    title.getText().toString(),
+                                    description.getText().toString(),
+                                    category.getText().toString(),
+                                    content.getText().toString(),
+                                    storageReference.getDownloadUrl().toString(),
+                                    mUser.getUid(),
+                                    pubDate(),
+                                    mUser.getDisplayName()
                             );
-                            */
+
+                            databaseReference.child(postNewsId).setValue(p);
+
                             Toast.makeText(getApplicationContext().getApplicationContext(), "Upload successful", Toast.LENGTH_LONG).show();
                         }
                     })
@@ -141,5 +156,12 @@ public class PostsActivity extends AppCompatActivity {
         }
     }
 
+    public String pubDate(){
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/YYYY hh:mm:ss");
+        String date = df.format(calendar.getTime());
+
+        return date;
+    }
 
 }
