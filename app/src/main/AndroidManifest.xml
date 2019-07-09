@@ -14,9 +14,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ConfigActivity"
+            android:name=".PostsActivity"
             android:parentActivityName=".HomeActivity"
             ></activity>
+        <activity
+            android:name=".ConfigActivity"
+            android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
