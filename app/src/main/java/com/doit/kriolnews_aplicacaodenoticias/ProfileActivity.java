@@ -3,6 +3,7 @@ package com.doit.kriolnews_aplicacaodenoticias;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -75,7 +76,15 @@ public class ProfileActivity extends AppCompatActivity {
                     Posts p = obj.getValue(Posts.class);
 
                     if(p.getUserId().equalsIgnoreCase(mUser.getUid())) {
-                        listTitle.add(p.getTitle());
+
+                        StringBuilder newString = new StringBuilder();
+                        newString.append(p.getTitle()+"\n\n");
+                        newString.append((p.getDescription())+"\n\n");
+                        newString.append(p.getPubDate());
+
+                        String post = newString.toString();
+
+                        listTitle.add(post);
                     }
                 }
 

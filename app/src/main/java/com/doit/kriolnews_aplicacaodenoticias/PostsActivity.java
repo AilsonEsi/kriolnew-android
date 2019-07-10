@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.doit.kriolnews_aplicacaodenoticias.account.LoginActivity;
 import com.doit.kriolnews_aplicacaodenoticias.model.Posts;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -121,6 +122,8 @@ public class PostsActivity extends AppCompatActivity {
             StorageReference fileReference = storageReference.child(System.currentTimeMillis()
                     + "." + getFileExtension(uriImagem));
 
+            Toast.makeText(getApplicationContext().getApplicationContext(), "A Publicar, aguarde", Toast.LENGTH_LONG).show();
+
             mUploadTask = fileReference.putFile(uriImagem)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -141,7 +144,7 @@ public class PostsActivity extends AppCompatActivity {
 
                             databaseReference.child(postNewsId).setValue(p);
 
-                            Toast.makeText(getApplicationContext().getApplicationContext(), "Upload successful", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext().getApplicationContext(), "Conteudo criado com sucesso", Toast.LENGTH_LONG).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
